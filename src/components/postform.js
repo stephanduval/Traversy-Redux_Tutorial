@@ -26,13 +26,13 @@ class PostsForm extends Component {
         } 
 
         fetch('https://jsonplaceholder.typicode.com/posts', {
-            method: 'POST'
+            method: 'POST',
             headers: {
-                'content-type' : 'applicaiton/json'
+                'content-type' : 'application/json'
             },
             body: JSON.stringify(post)
         })
-        .then(rest => rest.json())
+        .then(res => res.json())
         .then(data => console.log(data));
     }
     render() {
