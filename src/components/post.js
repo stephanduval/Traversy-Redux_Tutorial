@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';  // this connects your components to the redux store.
+import { fetchPosts } from '../actions/postActions'
 
-
-class Posts extends Component {
+// =========== We don't need these anymore because they now come from REDUX in the postActions file and the { store }
+/*class Posts extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,6 +16,11 @@ class Posts extends Component {
         fetch('https://jsonplaceholder.typicode.com/posts')
         .then(res => res.json())
         .then(data => this.setState({ posts : data }));
+    }
+*/
+class Posts extends Component {
+    componentWillMount() {
+        this.props.fetchPosts();
     }
 
     render() {
@@ -32,4 +39,4 @@ class Posts extends Component {
     }
 }
 
-export default Posts;
+export default connect(null, { fetchPosts })(Posts);
